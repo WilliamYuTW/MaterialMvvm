@@ -9,8 +9,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButtonToggleGroup.OnButtonCheckedListener
 import com.william.template.R
 import com.william.template.databinding.BottomSheetThemeInfoBinding
-import com.william.template.tools.Theme
-import com.william.template.tools.ThemeHelper
+import com.william.template.utils.Theme
+import com.william.template.utils.ThemeHelper
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.view_theme_toggle_group.view.*
 import javax.inject.Inject

@@ -56,6 +56,16 @@ dependencies {
     implementation dagger.hiltAndroid
     kapt dagger.hiltCompiler
 
+    implementation coroutines.core
+    implementation coroutines.android
+
+    implementation retrofit2.retrofit
+    implementation retrofit2.coverterMoshi
+    implementation retrofit2.coroutinesAdapter
+
+    implementation moshi.moshi
+    implementation moshi.kotlin
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

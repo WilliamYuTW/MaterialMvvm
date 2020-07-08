@@ -1,7 +1,7 @@
 package com.william.template
 
 import android.app.Application
-import com.william.template.tools.ThemeHelper
+import com.william.template.utils.ThemeHelper
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.william.template.tools
+package com.william.template.utils
 
 import androidx.appcompat.app.AppCompatDelegate
 import com.tencent.mmkv.MMKV

@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.william.template.R
-import com.william.template.tools.ThemeHelper
 import com.william.template.ui.themeinfo.ThemeInfoBottomSheet
+import com.william.template.utils.ThemeHelper
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
