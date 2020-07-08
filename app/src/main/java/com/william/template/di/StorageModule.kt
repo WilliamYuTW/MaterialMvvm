@@ -1,4 +1,4 @@
-package com.william.template
+package com.william.template.di
 
 import android.content.Context
 import com.tencent.mmkv.MMKV
@@ -16,7 +16,8 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-object Module {
+object StorageModule {
+
     @Provides
     @Singleton
     fun provideMmkv(@ApplicationContext applicationContext: Context): MMKV {
