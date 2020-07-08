@@ -1,20 +1,26 @@
 package com.william.template
 
 import android.app.Application
-import com.tencent.mmkv.MMKV
 import com.william.template.tools.ThemeHelper
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 /**
  * @author WeiYi Yu
  * @date 2020-07-08
  */
+
+@HiltAndroidApp
 class MyApplication : Application() {
 
     private val applicationScope = CoroutineScope(Dispatchers.Default)
+
+    @Inject
+    lateinit var themeHelper: ThemeHelper
 
     override fun onCreate() {
         super.onCreate()
@@ -23,10 +29,8 @@ class MyApplication : Application() {
 
     private fun delayInit() {
         applicationScope.launch {
-            MMKV.initialize(applicationContext)
-            val defaultMMKV = MMKV.defaultMMKV()
-            val currentTheme = ThemeHelper.getCurrentTheme(defaultMMKV)
-            ThemeHelper.applyTheme(defaultMMKV, currentTheme)
+            val currentTheme = themeHelper.getCurrentTheme()
+            themeHelper.applyTheme(currentTheme)
         }
     }
 }

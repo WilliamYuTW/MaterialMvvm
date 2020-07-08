@@ -6,14 +6,19 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.tencent.mmkv.MMKV
 import com.william.template.R
 import com.william.template.tools.Theme
 import com.william.template.tools.ThemeHelper
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+
+    @Inject
+    lateinit var themeHelper: ThemeHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +44,7 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_theme -> {
-                ThemeHelper.applyTheme(MMKV.defaultMMKV(), Theme.DARK)
+                themeHelper.applyTheme(Theme.DARK)
             }
         }
         return true

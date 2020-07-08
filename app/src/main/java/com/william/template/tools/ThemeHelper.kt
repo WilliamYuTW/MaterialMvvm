@@ -2,22 +2,28 @@ package com.william.template.tools
 
 import androidx.appcompat.app.AppCompatDelegate
 import com.tencent.mmkv.MMKV
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * @author WeiYi Yu
  * @date 2020-07-08
  */
-object ThemeHelper {
 
-    private const val KEY_THEME = "theme"
+@Singleton
+class ThemeHelper @Inject constructor(private val mmkv: MMKV) {
 
-    fun getCurrentTheme(mmkv: MMKV): Theme {
+    fun getCurrentTheme(): Theme {
         val mode = mmkv.getInt(KEY_THEME, Theme.SYSTEM_DEFAULT.mode)
         return Theme.get(mode)
     }
 
-    fun applyTheme(mmkv: MMKV, theme: Theme) {
+    fun applyTheme(theme: Theme) {
         AppCompatDelegate.setDefaultNightMode(theme.mode)
         mmkv.putInt(KEY_THEME, theme.mode)
+    }
+
+    companion object {
+        private const val KEY_THEME = "theme"
     }
 }
