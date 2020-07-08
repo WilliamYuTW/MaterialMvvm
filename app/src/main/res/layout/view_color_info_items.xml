@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorPrimary"
+        app:ci_title="colorPrimary" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorPrimaryVariant"
+        app:ci_title="colorPrimaryVariant" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorSecondary"
+        app:ci_title="colorSecondary" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorSecondaryVariant"
+        app:ci_title="colorSecondaryVariant" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?android:attr/colorBackground"
+        app:ci_title="colorBackground" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorError"
+        app:ci_title="colorError" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorSurface"
+        app:ci_title="colorSurface" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorOnPrimary"
+        app:ci_title="colorOnPrimary" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorOnSecondary"
+        app:ci_title="colorOnSecondary" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorOnBackground"
+        app:ci_title="colorOnBackground" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorOnError"
+        app:ci_title="colorOnError" />
+
+    <com.william.template.customviews.ColorInfo
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ci_color="?attr/colorOnSurface"
+        app:ci_title="colorOnSurface" />
+</LinearLayout>

@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.william.template.R
-import com.william.template.tools.Theme
 import com.william.template.tools.ThemeHelper
+import com.william.template.ui.themeinfo.ThemeInfoBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,8 +25,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
         val textView: TextView = root.findViewById(R.id.text_home)
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
@@ -44,7 +43,10 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_theme -> {
-                themeHelper.applyTheme(Theme.DARK)
+                ThemeInfoBottomSheet().show(
+                    childFragmentManager,
+                    ThemeInfoBottomSheet::class.simpleName
+                )
             }
         }
         return true

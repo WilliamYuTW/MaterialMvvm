@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatDelegate.*
  * @date 2020-07-08
  */
 enum class Theme(val mode: Int) {
-    DARK(MODE_NIGHT_YES),
+    NIGHT(MODE_NIGHT_YES),
     LIGHT(MODE_NIGHT_NO),
     SYSTEM_DEFAULT(
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {

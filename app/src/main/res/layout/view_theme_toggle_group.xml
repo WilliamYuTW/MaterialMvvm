@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="checkedListener"
+            type="com.google.android.material.button.MaterialButtonToggleGroup.OnButtonCheckedListener" />
+    </data>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/themeToggleGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:checkedListener="@{checkedListener}"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLightTheme"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Light"
+            app:icon="@drawable/ic_light_24" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnNightTheme"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Night"
+            app:icon="@drawable/ic_night_24" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSystemTheme"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="System"
+            app:icon="@drawable/ic_android_24" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+</layout>
