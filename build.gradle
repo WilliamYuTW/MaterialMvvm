@@ -17,6 +17,9 @@ buildscript {
                         ui      : "androidx.navigation:navigation-ui-ktx:$navigation_version"
                 ]
         ]
+
+        // key-value storage framework
+        mmkv = 'com.tencent:mmkv-static:1.2.1'
     }
 
     repositories {
