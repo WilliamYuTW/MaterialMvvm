@@ -57,6 +57,8 @@ dependencies {
     implementation mmkv
 
     implementation dagger.hiltAndroid
+    implementation dagger.hiltViewModel
+    kapt dagger.hiltAndroidCompiler
     kapt dagger.hiltCompiler
 
     implementation coroutines.core

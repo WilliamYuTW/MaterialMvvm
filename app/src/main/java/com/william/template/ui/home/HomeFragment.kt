@@ -2,11 +2,12 @@ package com.william.template.ui.home
 
 import android.os.Bundle
 import android.view.*
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.william.template.R
+import com.william.template.databinding.FragmentHomeBinding
+import com.william.template.network.TmdbApi
 import com.william.template.ui.themeinfo.ThemeInfoBottomSheet
 import com.william.template.utils.ThemeHelper
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,25 +16,32 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private val homeViewModel by viewModels<HomeViewModel>()
 
     @Inject
     lateinit var themeHelper: ThemeHelper
+
+    @Inject
+    lateinit var tmdbApi: TmdbApi
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+        val binding = FragmentHomeBinding.inflate(inflater).apply {
+            lifecycleOwner = viewLifecycleOwner
+        }
+
+        val adapter = PopularMovieAdapter()
+        binding.movieList.adapter = adapter
+
+        homeViewModel.popularMovieList.observe(viewLifecycleOwner, Observer {
+            adapter.submitList(it)
         })
 
         setHasOptionsMenu(true)
-        return root
+        return binding.root
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
