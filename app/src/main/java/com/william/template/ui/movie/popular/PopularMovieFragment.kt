@@ -1,4 +1,4 @@
-package com.william.template.ui.home
+package com.william.template.ui.movie.popular
 
 import android.os.Bundle
 import android.view.*
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.william.template.R
-import com.william.template.databinding.FragmentHomeBinding
+import com.william.template.databinding.FragmentPopularMovieBinding
 import com.william.template.network.TmdbApi
 import com.william.template.ui.themeinfo.ThemeInfoBottomSheet
 import com.william.template.utils.ThemeHelper
@@ -14,9 +14,9 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class HomeFragment : Fragment() {
+class PopularMovieFragment : Fragment() {
 
-    private val homeViewModel by viewModels<HomeViewModel>()
+    private val popularMovieViewModel by viewModels<PopularMovieViewModel>()
 
     @Inject
     lateinit var themeHelper: ThemeHelper
@@ -29,14 +29,14 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentHomeBinding.inflate(inflater).apply {
+        val binding = FragmentPopularMovieBinding.inflate(inflater).apply {
             lifecycleOwner = viewLifecycleOwner
         }
 
         val adapter = PopularMovieAdapter()
         binding.movieList.adapter = adapter
 
-        homeViewModel.popularMovieList.observe(viewLifecycleOwner, Observer {
+        popularMovieViewModel.popularMovieList.observe(viewLifecycleOwner, Observer {
             adapter.submitList(it)
         })
 

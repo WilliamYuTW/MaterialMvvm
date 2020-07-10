@@ -1,11 +1,11 @@
-package com.william.template.ui.home
+package com.william.template.ui.movie.popular
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.william.template.databinding.ListItemMovieBinding
+import com.william.template.databinding.ListItemPopularMovieBinding
 import com.william.template.network.dto.TmdbMovie
 
 /**
@@ -25,7 +25,7 @@ class PopularMovieAdapter :
         holder.bind(getItem(position))
     }
 
-    class ViewHolder private constructor(val binding: ListItemMovieBinding) :
+    class ViewHolder private constructor(val binding: ListItemPopularMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: TmdbMovie) {
@@ -36,7 +36,7 @@ class PopularMovieAdapter :
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = ListItemMovieBinding.inflate(layoutInflater, parent, false)
+                val binding = ListItemPopularMovieBinding.inflate(layoutInflater, parent, false)
                 return ViewHolder(binding)
             }
         }

@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center"
-    android:paddingStart="16dp"
-    android:paddingTop="8dp"
-    android:paddingEnd="16dp"
-    android:paddingBottom="8dp">
+    android:paddingStart="@dimen/spacing_normal"
+    android:paddingTop="@dimen/spacing_small"
+    android:paddingEnd="@dimen/spacing_normal"
+    android:paddingBottom="@dimen/spacing_small">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvTitle"

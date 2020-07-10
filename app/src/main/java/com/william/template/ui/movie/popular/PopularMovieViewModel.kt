@@ -1,4 +1,4 @@
-package com.william.template.ui.home
+package com.william.template.ui.movie.popular
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
@@ -10,12 +10,12 @@ import com.william.template.network.TmdbApi
 import com.william.template.network.dto.TmdbMovie
 import kotlinx.coroutines.*
 
-class HomeViewModel @ViewModelInject constructor(
+class PopularMovieViewModel @ViewModelInject constructor(
     private val tmdbApi: TmdbApi,
     @Assisted private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
 
-    private val viewModelJob = SupervisorJob()
+    private val viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val _popularMovieList = MutableLiveData<List<TmdbMovie>>()
@@ -29,5 +29,9 @@ class HomeViewModel @ViewModelInject constructor(
             }
             _popularMovieList.value = movieList
         }
+    }
+
+    override fun onCleared() {
+        viewModelJob.cancel()
     }
 }

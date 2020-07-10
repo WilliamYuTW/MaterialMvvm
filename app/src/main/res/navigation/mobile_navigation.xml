@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.william.template.ui.home.HomeFragment"
+        android:name="com.william.template.ui.movie.popular.PopularMovieFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_popular_movie" />
 
     <fragment
         android:id="@+id/navigation_dashboard"

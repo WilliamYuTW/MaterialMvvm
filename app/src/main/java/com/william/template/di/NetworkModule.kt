@@ -5,6 +5,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.william.template.network.RequestInterceptor
 import com.william.template.network.TmdbApi
+import com.william.template.network.TmdbUrl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,7 +33,7 @@ object NetworkModule {
     ): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://api.themoviedb.org/3/")
+            .baseUrl(TmdbUrl.API_PATH)
             .addConverterFactory(converterFactory)
             .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .build()
