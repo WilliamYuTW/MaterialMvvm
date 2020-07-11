@@ -19,7 +19,7 @@ fun ImageView.setPosterUrl(url: String?) {
             placeholder(R.drawable.anim_loading)
             error(R.drawable.ic_broken)
             crossfade(true)
-            transformations(RoundedCornersTransformation(8f))
+            transformations(RoundedCornersTransformation(32f))
         }
     }
 }
