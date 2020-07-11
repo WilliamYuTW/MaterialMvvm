@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="tmdbMovie"
-            type="com.william.template.network.dto.TmdbMovie" />
+            name="movie"
+            type="com.william.template.model.database.DatabaseMovie" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,7 +39,7 @@
                     android:ellipsize="end"
                     android:fontFamily="sans-serif-black"
                     android:singleLine="true"
-                    android:text="@{tmdbMovie.title}"
+                    android:text="@{movie.title}"
                     android:textAppearance="?attr/textAppearanceHeadline6"
                     app:layout_constraintEnd_toStartOf="@+id/tvRating"
                     app:layout_constraintStart_toStartOf="@+id/guideline3"
@@ -133,7 +133,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.13"
-            app:posterUrl="@{tmdbMovie.posterPath}"
+            app:posterUrl="@{movie.posterPath}"
             tools:srcCompat="@drawable/img_fight_club" />
 
         <androidx.constraintlayout.widget.Guideline

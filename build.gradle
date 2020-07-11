@@ -56,8 +56,17 @@ buildscript {
                 kotlin: "com.squareup.moshi:moshi-kotlin:$moshi_version"
         ]
 
+        room_version = "2.2.5"
+        room = [
+                roomRuntime: "androidx.room:room-runtime:$room_version",
+                compiler: "androidx.room:room-compiler:$room_version"
+        ]
+
         // Image loading
         koil = 'io.coil-kt:coil:0.11.0'
+
+        // Logging
+        timber = 'com.jakewharton.timber:timber:4.7.1'
 
         ext.getProperty = { filename, propertyName ->
             def propsFile = rootProject.file(filename)

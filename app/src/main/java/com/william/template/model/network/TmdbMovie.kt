@@ -1,6 +1,7 @@
-package com.william.template.network.dto
+package com.william.template.model.network
 
 import com.squareup.moshi.Json
+import com.william.template.model.database.DatabaseMovie
 
 /**
  * @author WeiYi Yu
@@ -20,3 +21,17 @@ data class TmdbMovie(
     @Json(name = "poster_path") val posterPath: String,
     @Json(name = "backdrop_path") val backdropPath: String
 )
+
+fun PopularMovie.asDatabaseModel(): Array<DatabaseMovie> {
+    return movieList.map {
+        DatabaseMovie(
+            id = it.id,
+            adult = it.adult,
+            backdropPath = it.backdropPath,
+            overview = it.overview,
+            posterPath = it.posterPath,
+            title = it.title,
+            voteAverage = it.voteAverage
+        )
+    }.toTypedArray()
+}

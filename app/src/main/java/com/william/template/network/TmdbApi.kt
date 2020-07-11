@@ -1,6 +1,6 @@
 package com.william.template.network
 
-import com.william.template.network.dto.PopularMovie
+import com.william.template.model.network.PopularMovie
 import retrofit2.http.GET
 
 /**

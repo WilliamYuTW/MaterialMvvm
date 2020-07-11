@@ -1,4 +1,4 @@
-package com.william.template.domain
+package com.william.template.model.domain
 
 import android.os.Build
 import androidx.appcompat.app.AppCompatDelegate.*

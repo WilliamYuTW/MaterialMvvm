@@ -6,6 +6,7 @@ import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -29,6 +30,10 @@ class MyApplication : Application() {
 
     private fun delayInit() {
         applicationScope.launch {
+            if (BuildConfig.DEBUG) {
+                Timber.plant(Timber.DebugTree())
+            }
+
             val currentTheme = themeHelper.getCurrentTheme()
             themeHelper.applyTheme(currentTheme)
         }
