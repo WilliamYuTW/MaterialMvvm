@@ -1,6 +1,6 @@
 package com.william.template.di
 
-import com.william.template.database.MovieDao
+import com.william.template.database.AppDatabase
 import com.william.template.network.TmdbApi
 import com.william.template.repository.MovieRepository
 import dagger.Module
@@ -20,8 +20,8 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMovieRepository(movieDao: MovieDao, tmdbApi: TmdbApi): MovieRepository {
-        return MovieRepository(movieDao, tmdbApi)
+    fun provideMovieRepository(appDatabase: AppDatabase, tmdbApi: TmdbApi): MovieRepository {
+        return MovieRepository(appDatabase, tmdbApi)
     }
 
 }

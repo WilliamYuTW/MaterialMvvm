@@ -1,7 +1,9 @@
 package com.william.template.network
 
-import com.william.template.model.network.PopularMovie
+import com.william.template.model.network.GenreResponse
+import com.william.template.model.network.PopularMovieResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 /**
  * @author WeiYi Yu
@@ -9,5 +11,11 @@ import retrofit2.http.GET
  */
 interface TmdbApi {
     @GET("movie/popular")
-    suspend fun getPopularMovies(): PopularMovie
+    suspend fun getPopularMovies(): PopularMovieResponse
+
+    @GET("movie/{movie_id}/credits")
+    suspend fun getMovieCredits(@Path("movie_id") movieId: Int): PopularMovieResponse
+
+    @GET("genre/movie/list")
+    suspend fun getGenres(): GenreResponse
 }

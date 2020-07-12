@@ -2,10 +2,10 @@ package com.william.template.ui.movie.popular
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.william.template.model.database.DatabaseMovie
+import com.william.template.model.domain.Movie
 import com.william.template.repository.MovieRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,11 +20,13 @@ class PopularMovieViewModel @ViewModelInject constructor(
     private val viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    val popularMovieList: LiveData<List<DatabaseMovie>> = movieRepository.movies
+    val popularMovieList: MediatorLiveData<List<Movie>> = movieRepository.movies
 
     init {
         viewModelScope.launch {
+            // TODO: Send requests in parallel
             movieRepository.getPopularMovies()
+            movieRepository.getGenres()
         }
     }
 
