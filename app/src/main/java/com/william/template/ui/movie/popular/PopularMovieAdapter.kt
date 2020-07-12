@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.william.template.R
 import com.william.template.databinding.ListItemPopularMovieBinding
-import com.william.template.model.database.DatabaseMovie
+import com.william.template.model.domain.Movie
 
 /**
  * @author WeiYi Yu
@@ -14,7 +16,7 @@ import com.william.template.model.database.DatabaseMovie
  */
 
 class PopularMovieAdapter :
-    ListAdapter<DatabaseMovie, PopularMovieAdapter.ViewHolder>(MovieDiffCallback()) {
+    ListAdapter<Movie, PopularMovieAdapter.ViewHolder>(MovieDiffCallback()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -28,7 +30,17 @@ class PopularMovieAdapter :
     class ViewHolder private constructor(val binding: ListItemPopularMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: DatabaseMovie) {
+        fun bind(movie: Movie) {
+            binding.chipGroup.run {
+                removeAllViews()
+                movie.genres.forEach {
+                    val chip = LayoutInflater.from(context)
+                        .inflate(R.layout.view_genre_chip, this, false) as Chip
+                    chip.text = it
+                    addView(chip)
+                }
+            }
+
             binding.movie = movie
             binding.executePendingBindings()
         }
@@ -43,12 +55,12 @@ class PopularMovieAdapter :
     }
 }
 
-class MovieDiffCallback : DiffUtil.ItemCallback<DatabaseMovie>() {
-    override fun areItemsTheSame(oldItem: DatabaseMovie, newItem: DatabaseMovie): Boolean {
+class MovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
+    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: DatabaseMovie, newItem: DatabaseMovie): Boolean {
+    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
         return oldItem == newItem
     }
 }
