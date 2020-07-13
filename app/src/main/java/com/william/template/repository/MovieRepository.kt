@@ -20,25 +20,27 @@ import timber.log.Timber
 class MovieRepository(private val appDatabase: AppDatabase, val tmdbApi: TmdbApi) {
     private val _movies: LiveData<List<DatabaseMovie>> = appDatabase.movieDao.getMovies()
     private val _genres: LiveData<List<DatabaseGenre>> = appDatabase.genreDao.getGenres()
-    val movies: MediatorLiveData<List<Movie>> = MediatorLiveData()
+    private val _domainMovies: MediatorLiveData<List<Movie>> = MediatorLiveData()
+    val domainMovie: LiveData<List<Movie>> = _domainMovies
 
     private var fetchedMovies = false
     private var fetchedGenres = false
 
     init {
-        movies.addSource(_movies) {
+        _domainMovies.addSource(_movies) {
             fetchedMovies = true
             mapResult()
         }
-        movies.addSource(_genres) {
+        _domainMovies.addSource(_genres) {
             fetchedGenres = true
             mapResult()
         }
     }
 
     private fun mapResult() {
+        // TODO: Better way to do this?
         if (fetchedMovies && fetchedGenres) {
-            movies.postValue(_movies.value?.map { it ->
+            _domainMovies.postValue(_movies.value?.map { it ->
                 Movie(id = it.id,
                     adult = it.adult,
                     backdropPath = it.backdropPath,

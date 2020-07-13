@@ -2,7 +2,7 @@ package com.william.template.ui.movie.popular
 
 import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.william.template.model.domain.Movie
@@ -20,7 +20,7 @@ class PopularMovieViewModel @ViewModelInject constructor(
     private val viewModelJob = Job()
     private val viewModelScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    val popularMovieList: MediatorLiveData<List<Movie>> = movieRepository.movies
+    val popularMovieList: LiveData<List<Movie>> = movieRepository.domainMovie
 
     init {
         viewModelScope.launch {
