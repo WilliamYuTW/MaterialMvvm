@@ -3,6 +3,7 @@ package com.william.template.ui.movie.popular
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import coil.api.load
+import coil.transform.BlurTransformation
 import coil.transform.RoundedCornersTransformation
 import com.william.template.R
 import com.william.template.network.TmdbUrl
@@ -29,7 +30,7 @@ fun ImageView.setBackdropUrl(url: String?) {
     url?.let {
         load(TmdbUrl.getBackdropPath(url)) {
             crossfade(true)
-            transformations(RoundedCornersTransformation(8f))
+            transformations(BlurTransformation(context))
         }
     }
 }
