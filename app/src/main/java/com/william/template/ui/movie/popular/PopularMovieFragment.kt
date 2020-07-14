@@ -2,11 +2,14 @@ package com.william.template.ui.movie.popular
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.william.template.R
 import com.william.template.databinding.FragmentPopularMovieBinding
+import com.william.template.model.domain.Movie
+import com.william.template.ui.base.DataBindingViewHolder
 import com.william.template.ui.themeinfo.ThemeInfoBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +27,14 @@ class PopularMovieFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
         }
 
-        val adapter = PopularMovieAdapter()
+        val adapter = PopularMovieAdapter().apply {
+            onItemClickListener = object : DataBindingViewHolder.OnItemClickListener<Movie> {
+                override fun onItemClicked(item: Movie, position: Int) {
+                    Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
         binding.movieList.adapter = adapter
 //        PagerSnapHelper().attachToRecyclerView(binding.movieList)
 
