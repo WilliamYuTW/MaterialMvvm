@@ -13,15 +13,16 @@ import com.william.template.ui.base.DataBindingViewHolder
  * @date 2020-07-09
  */
 
-class PopularMovieAdapter :
-    DataBindingAdapter<Movie>(MovieDiffCallback()) {
+class PopularMovieAdapter : DataBindingAdapter<Movie>(MovieDiffCallback()) {
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): DataBindingViewHolder<Movie> = ViewHolder.from(parent)
 
-    private class ViewHolder private constructor(val binding: ListItemPopularMovieBinding) :
-        DataBindingViewHolder<Movie>(binding) {
+    private class ViewHolder private constructor(
+        val binding: ListItemPopularMovieBinding
+    ) : DataBindingViewHolder<Movie>(binding) {
 
         override fun bind(item: Movie) {
             binding.movie = item

@@ -8,8 +8,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.william.template.R
 import com.william.template.databinding.FragmentPopularMovieBinding
-import com.william.template.model.domain.Movie
-import com.william.template.ui.base.DataBindingViewHolder
 import com.william.template.ui.themeinfo.ThemeInfoBottomSheet
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,10 +26,8 @@ class PopularMovieFragment : Fragment() {
         }
 
         val adapter = PopularMovieAdapter().apply {
-            onItemClickListener = object : DataBindingViewHolder.OnItemClickListener<Movie> {
-                override fun onItemClicked(item: Movie, position: Int) {
-                    Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
-                }
+            setOnItemClickListener { item, position ->
+                Toast.makeText(context, item.title, Toast.LENGTH_SHORT).show()
             }
         }
 

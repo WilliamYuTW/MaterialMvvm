@@ -1,9 +1,7 @@
 package com.william.template.ui.base
 
-import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 
 /**
  * @author WeiYi Yu
@@ -13,23 +11,17 @@ abstract class DataBindingAdapter<T>(
     itemDiffCallback: DiffUtil.ItemCallback<T>
 ) : ListAdapter<T, DataBindingViewHolder<T>>(itemDiffCallback) {
 
-    var onItemClickListener: DataBindingViewHolder.OnItemClickListener<T>? = null
+    private var onItemClickListener: ((item: T, position: Int) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (item: T, position: Int) -> Unit) {
+        onItemClickListener = listener
+    }
 
     override fun onBindViewHolder(holder: DataBindingViewHolder<T>, position: Int) {
         val item = getItem(position)
         holder.bind(item)
         holder.itemView.setOnClickListener {
-            onItemClickListener?.onItemClicked(item, position)
+            onItemClickListener?.invoke(item, position)
         }
-    }
-}
-
-abstract class DataBindingViewHolder<T>(binding: ViewDataBinding) :
-    RecyclerView.ViewHolder(binding.root) {
-
-    abstract fun bind(item: T)
-
-    interface OnItemClickListener<T> {
-        fun onItemClicked(item: T, position: Int)
     }
 }
